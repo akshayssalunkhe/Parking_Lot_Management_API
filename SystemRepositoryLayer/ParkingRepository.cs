@@ -53,7 +53,7 @@ namespace ParkingLotRepositoryLayer
                     this.sqlConnection.Close();
                     if (result <= 0)
                     {
-                        return parking;
+                        return this.GetVehicleData(parking.SlotNumber);
                     }
 
                     return null;

@@ -27,7 +27,7 @@ namespace ParkingLotManagementSystem
         /// <param name="args">args.</param>
         public static void Main(string[] args)
         {
-            Receiver.ReceiveFromQueue();
+         // Receiver.ReceiveFromQueue();
             CreateHostBuilder(args).Build().Run();
         }
 

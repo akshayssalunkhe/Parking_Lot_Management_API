@@ -39,7 +39,7 @@ namespace ParkingLotApplication.Controllers
             var result = this.ownerService.ParkVehicle(parking);
             if (result != null)
             {
-                Sender.AddMessageToQueue("Vehicle Number " + result.VehicleNumber + "is parked");
+               // Sender.AddMessageToQueue("Vehicle Number " + result.VehicleNumber + "is parked" + " in Slot Number" + result.SlotNumber + " Parking Id is " + result.ParkingId);
 
                 return this.Ok(new ResponseEntity(HttpStatusCode.OK, "Vehicle Parked Successfully", result));
             }
