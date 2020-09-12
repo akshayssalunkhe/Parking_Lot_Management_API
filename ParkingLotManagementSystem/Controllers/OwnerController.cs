@@ -17,6 +17,7 @@ namespace ParkingLotApplication.Controllers
     public class OwnerController : ControllerBase
     {
         private readonly IOwnerService ownerService;
+        private Msmq mSMQService = new Msmq();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OwnerController"/> class.
@@ -25,6 +26,7 @@ namespace ParkingLotApplication.Controllers
         public OwnerController(IOwnerService ownerService)
         {
             this.ownerService = ownerService;
+          //  this.mSMQService = mSMQService;
         }
 
         /// <summary>
@@ -41,6 +43,7 @@ namespace ParkingLotApplication.Controllers
             {
                // Sender.AddMessageToQueue("Vehicle Number " + result.VehicleNumber + "is parked" + " in Slot Number" + result.SlotNumber + " Parking Id is " + result.ParkingId);
 
+                this.mSMQService.AddToQueue("Vehicle Number " + result.VehicleNumber + "is parked " + " in Slot Number " + result.SlotNumber + " Parking Id is " + result.ParkingId);
                 return this.Ok(new ResponseEntity(HttpStatusCode.OK, "Vehicle Parked Successfully", result));
             }
 
